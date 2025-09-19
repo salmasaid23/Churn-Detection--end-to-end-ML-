@@ -3,7 +3,7 @@ import joblib
 from dotenv import load_dotenv
 
 
-# Load .env file
+# Load environment variables from .env file
 load_dotenv(override=True)
 
 # Variables
