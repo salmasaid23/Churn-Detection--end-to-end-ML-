@@ -10,6 +10,7 @@ The API accepts customer details as input, preprocesses them, and returns:
 ---
 
 ## Project Structure
+``` bash
 
 ├── main.py # FastAPI app entry point
 ├── utils/
@@ -23,6 +24,7 @@ The API accepts customer details as input, preprocesses them, and returns:
 ├── .env # Environment variables
 └── README.md # Project documentation
 
+```
 ## Install dependencies:
 
 ```bash
@@ -35,29 +37,31 @@ $ pip install -r requirements.txt
 $ uvicorn main:app --reload --host 0.0.0.0 --port 8000
 ```
 
+#### The API will be available at `http://localhost:8000`
+
 ## API Endpoints
 
 All requests must include the header:
 
 ```http
 X-API-Key: your_secret_key_here
+```
 
-1- Health Check
-GET /
+* GET /: Health check
+  * Response:
 
-Response:
+``` bash
 
 {
   "app_name": "Churn Prediction API",
   "version": "1.0.0",
   "status": "Up & Running"
 }
+```
 
-2- Predict with Random Forest
-POST /predict/forest
-
-Request Body:
-
+* POST /predict/forest: Predict with Random Forest
+  * Request Body:
+``` bash
 {
   "CreditScore": 650,
   "Geography": "France",
@@ -70,17 +74,14 @@ Request Body:
   "IsActiveMember": 1,
   "EstimatedSalary": 50000
 }
+```
+  * Response:
 
-
-Response:
-
+``` bash
 {
   "churn_prediction": true,
   "churn_probability": 0.82
 }
-
-3- Predict with XGBoost
-POST /predict/xgboost
-
-same as above
 ```
+* POST /predict/xgboost: Predict with XGBoost
+  * same as above
